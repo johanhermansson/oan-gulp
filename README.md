@@ -5,7 +5,7 @@ For single build: `gulp`<br>
 To watch: `gulp watch`<br>
 For production build: `gulp --production`
 
-Requires a gulpconfig.json. Example:
+Requires a `gulpconfig.json` beside the `gulpfile.js`. Example:
 
 ```
 {
