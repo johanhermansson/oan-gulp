@@ -5,36 +5,36 @@ For single build: `gulp`<br>
 To watch: `gulp watch`<br>
 For production build: `gulp --production`
 
-Requires a `gulpconfig.json` beside the `gulpfile.js`. Example:
+Requires a config object in your `gulpfile.js`. Example:
 
 ```
-{
-    "js": {
-        "src": "./src/js/app.js",
-        "dist": "./dist/js",
-        "id": "app"
+require('oan-gulp-tasks')({
+    js: {
+        src: "./src/js/app.js",
+        dist: "./dist/js",
+        id: "app"
     },
-    "sass": {
-        "src": [
+    sass: {
+        src: [
             "./src/sass/app.scss"
         ],
-        "srcFolder": "./src/sass",
-        "dist": "./dist/css",
-        "id": "app"
+        srcFolder: "./src/sass",
+        dist: "./dist/css",
+        id: "app"
     },
-    "svg": {
-        "src": "./src/svg/**/*.svg",
-        "dist": "./dist"
+    svg: {
+        src: "./src/svg/**/*.svg",
+        dist: "./dist"
     },
-    "rev": {
-        "src": [
+    rev: {
+        src: [
 			"./dist/css/app.css",
 			"./dist/js/app.js"
 		],
-		"dist": "./dist"
+		dist: "./dist"
     },
-    "watch": {
-        "sass": "./src/sass/**/*.scss"
+    watch: {
+        sass: "./src/sass/**/*.scss"
     }
-}
+});
 ```
