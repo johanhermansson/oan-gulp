@@ -1,5 +1,5 @@
 # OAN Gulp tasks
-Johan Hermansson's gulp tasks; watch, sass, browserify, svg.
+Johan Hermansson's gulp tasks; watch, sass, browserify, svg, modernizr, lint:js.
 
 For single build: `gulp`<br>
 To watch: `gulp watch`<br>
