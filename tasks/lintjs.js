@@ -3,8 +3,10 @@ gulp        = require('gulp'),
 jshint      = require('gulp-jshint'),
 stylish     = require('jshint-stylish');
 
-module.exports = function( config ) {
-    config = config.js;
+module.exports = function( conf ) {
+    if( ! conf || ! conf.js || ! conf.js.lint ) return conf;
+
+    var config = conf.js;
 
     gulp.task('lint:js', function() {
         return gulp
@@ -13,4 +15,6 @@ module.exports = function( config ) {
         .pipe( jshint.reporter( stylish ) )
         .on('error', onError );
     });
+
+    return conf;
 };

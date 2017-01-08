@@ -14,10 +14,11 @@ source      = require('vinyl-source-stream'),
 seq         = require('run-sequence'),
 notify      = require('gulp-notify');
 
-module.exports = function( config ) {
-	config = config.js;
+module.exports = function( conf ) {
+	if( ! conf || ! conf.js ) return conf;
 
-	var inProduction = !! argv.production,
+	var config = conf.js,
+	inProduction = !! argv.production,
 	bundler;
 
 	var build = function( watch ) {
@@ -71,4 +72,6 @@ module.exports = function( config ) {
 	gulp.task('browserify:del', function() {
 		return del.sync( config.dist + '/*.js' );
 	});
+
+	return conf;
 };

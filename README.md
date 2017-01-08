@@ -10,31 +10,36 @@ Requires a config object in your `gulpfile.js`. Example:
 ```
 require('oan-gulp-tasks')({
     js: {
-        src: "./src/js/app.js",
-        dist: "./dist/js",
-        id: "app"
+        src: './src/js/app.js',
+        dist: './dist/js',
+        id: 'app',
+        lint: './src/js/**/*.js'
     },
     sass: {
         src: [
-            "./src/sass/app.scss"
+            './src/sass/app.scss'
         ],
-        srcFolder: "./src/sass",
-        dist: "./dist/css",
-        id: "app"
+        srcFolder: './src/sass',
+        dist: './dist/css',
+        id: 'app'
     },
     svg: {
-        src: "./src/svg/**/*.svg",
-        dist: "./dist"
+        src: './src/svg/**/*.svg',
+        dist: './dist'
     },
     rev: {
         src: [
-			"./dist/css/app.css",
-			"./dist/js/app.js"
-		],
-		dist: "./dist"
+            './dist/css/app.css',
+            './dist/js/app.js'
+        ],
+        dist: './dist'
     },
     watch: {
-        sass: "./src/sass/**/*.scss"
+        sass: './src/sass/**/*.scss'
+    },
+    modernizr: {
+        src: './src/js/**/*.js',
+        includeTests: []
     }
 });
 ```

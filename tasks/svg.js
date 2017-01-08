@@ -6,10 +6,11 @@ plumber     = require('gulp-plumber'),
 argv        = require('yargs').argv,
 svgSprite   = require('gulp-svg-sprite');
 
-module.exports = function( config ) {
-	config = config.svg;
+module.exports = function( conf ) {
+	if( ! conf || ! conf.svg ) return conf;
 
-	var inProduction = !! argv.production;
+	var config = conf.svg,
+	inProduction = !! argv.production;
 
 	gulp.task('svg', function() {
 	    return gulp.src( config.src )
@@ -44,5 +45,5 @@ module.exports = function( config ) {
 	    .pipe( gulpIf( ! inProduction, notify({ message: 'SVG!', onLast: true }) ) );
 	});
 
-	module.exports = {};
+	return conf;
 };

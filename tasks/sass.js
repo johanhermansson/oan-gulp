@@ -13,10 +13,11 @@ cssnano      = require('cssnano'),
 mqpacker     = require('css-mqpacker'),
 sourcemaps   = require('gulp-sourcemaps');
 
-module.exports = function( config ) {
-	config = config.sass;
+module.exports = function( conf ) {
+	if( ! conf || ! conf.sass ) return conf;
 
-    var inProduction = !! argv.production;
+	var config = conf.sass,
+    inProduction = !! argv.production;
 
     gulp.task('sass', function() {
         return gulp.src( config.src )
@@ -42,4 +43,6 @@ module.exports = function( config ) {
         .pipe( gulp.dest( config.dist ) )
         .pipe( gulpIf( ! inProduction, notify({ message: 'Sassy!', onLast: true }) ) );
     });
+
+	return conf;
 };
