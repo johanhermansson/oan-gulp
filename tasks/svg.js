@@ -1,12 +1,13 @@
+var onError = require('../events/onError'),
+gulp        = require('gulp'),
+gulpIf      = require('gulp-if'),
+notify      = require('gulp-notify'),
+plumber     = require('gulp-plumber'),
+argv        = require('yargs').argv,
+svgSprite   = require('gulp-svg-sprite');
+
 module.exports = function( config ) {
-	var config = config.svg,
-	onError    = require('../events/onError'),
-	gulp       = require('gulp'),
-	gulpIf     = require('gulp-if'),
-	notify     = require('gulp-notify'),
-	plumber    = require('gulp-plumber'),
-	argv       = require('yargs').argv,
-	svgSprite  = require('gulp-svg-sprite');
+	config = config.svg;
 
 	var inProduction = !! argv.production;
 

@@ -1,20 +1,21 @@
+var onError = require('../events/onError'),
+gulp        = require('gulp'),
+gulpIf      = require('gulp-if'),
+del         = require('del'),
+sourcemaps  = require('gulp-sourcemaps'),
+rename      = require('gulp-rename'),
+argv        = require('yargs').argv,
+browserify  = require('browserify'),
+babelify    = require('babelify'),
+watchify    = require('watchify'),
+uglifyify   = require('uglifyify'),
+hbsfy       = require('hbsfy'),
+source      = require('vinyl-source-stream'),
+seq         = require('run-sequence'),
+notify      = require('gulp-notify');
+
 module.exports = function( config ) {
-	var config = config.js,
-	onError    = require('../events/onError'),
-	gulp       = require('gulp'),
-	gulpIf     = require('gulp-if'),
-	del        = require('del'),
-	sourcemaps = require('gulp-sourcemaps'),
-	rename     = require('gulp-rename'),
-	argv       = require('yargs').argv,
-	browserify = require('browserify'),
-	babelify   = require('babelify'),
-	watchify   = require('watchify'),
-	uglifyify  = require('uglifyify'),
-	hbsfy      = require('hbsfy'),
-	source     = require('vinyl-source-stream'),
-	seq        = require('run-sequence'),
-	notify     = require('gulp-notify');
+	config = config.js;
 
 	var inProduction = !! argv.production,
 	bundler;

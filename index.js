@@ -5,4 +5,5 @@ module.exports = function( config ) {
     require('./tasks/sass')( config );
     require('./tasks/svg')( config );
     require('./tasks/watch')( config );
+    require('./tasks/lintjs')( config );
 };

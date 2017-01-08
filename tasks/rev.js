@@ -1,9 +1,10 @@
+var onError = require('../events/onError'),
+gulp        = require('gulp'),
+plumber     = require('gulp-plumber'),
+rev         = require('gulp-rev');
+
 module.exports = function( config ) {
-	var config = config.rev,
-	onError    = require('../events/onError'),
-	gulp       = require('gulp'),
-	plumber    = require('gulp-plumber'),
-	rev        = require('gulp-rev');
+	config = config.rev;
 
 	gulp.task('rev', function() {
 		return gulp.src( config.src, { base: config.dist } )

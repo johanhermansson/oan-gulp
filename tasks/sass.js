@@ -1,19 +1,20 @@
-module.exports = function( config ) {
-	var config = config.sass,
-    onError      = require('../events/onError'),
-    gulp         = require('gulp'),
-    gulpIf       = require('gulp-if'),
-    notify       = require('gulp-notify'),
-    argv         = require('yargs').argv,
-    rename       = require('gulp-rename'),
-    plumber      = require('gulp-plumber'),
+var onError  = require('../events/onError'),
+gulp         = require('gulp'),
+gulpIf       = require('gulp-if'),
+notify       = require('gulp-notify'),
+argv         = require('yargs').argv,
+rename       = require('gulp-rename'),
+plumber      = require('gulp-plumber'),
 
-    sass         = require('gulp-sass'),
-    postcss      = require('gulp-postcss'),
-    autoprefixer = require('autoprefixer'),
-    cssnano      = require('cssnano'),
-    mqpacker     = require('css-mqpacker'),
-    sourcemaps   = require('gulp-sourcemaps');
+sass         = require('gulp-sass'),
+postcss      = require('gulp-postcss'),
+autoprefixer = require('autoprefixer'),
+cssnano      = require('cssnano'),
+mqpacker     = require('css-mqpacker'),
+sourcemaps   = require('gulp-sourcemaps');
+
+module.exports = function( config ) {
+	config = config.sass;
 
     var inProduction = !! argv.production;
 

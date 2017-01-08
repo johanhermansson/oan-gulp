@@ -1,11 +1,12 @@
+var gulp    = require('gulp'),
+gutil       = require('gulp-util'),
+seq         = require('run-sequence');
+
 module.exports = function( config ) {
-	var config = config.watch,
-    gulp        = require('gulp'),
-    gutil       = require('gulp-util'),
-    seq         = require('run-sequence');
+	config = config.watch;
 
     gulp.task('watch', function() {
-        seq('svg', 'sass', 'browserify:watch', 'rev');
+        seq('svg', 'sass', 'lint:js', 'browserify:watch', 'rev');
 
         gulp.watch( config.sass, ['sass', 'rev'] );
 
