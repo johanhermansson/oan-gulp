@@ -1,6 +1,6 @@
 {
   "name": "oan-gulp-tasks",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "repository": {
     "url": "git@github.com:johanhermansson/oan-gulp-tasks.git",
@@ -22,6 +22,7 @@
     "css-mqpacker": "^5.0.1",
     "cssnano": "^3.9.1",
     "del": "^2.2.2",
+    "gulp": "^3.9.1",
     "gulp-if": "^2.0.2",
     "gulp-jshint": "^2.0.4",
     "gulp-modernizr": "^1.0.0-alpha",
