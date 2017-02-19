@@ -5,6 +5,7 @@ notify       = require('gulp-notify'),
 argv         = require('yargs').argv,
 rename       = require('gulp-rename'),
 plumber      = require('gulp-plumber'),
+clean        = require('del'),
 
 sass         = require('gulp-sass'),
 postcss      = require('gulp-postcss'),
@@ -18,6 +19,10 @@ module.exports = function( conf ) {
 
 	var config = conf.sass,
     inProduction = !! argv.production;
+
+	gulp.task('sass-clean', function() {
+		return clean( config.dist + '/' + config.id + '*.css' );
+	});
 
     gulp.task('sass', function() {
         return gulp.src( config.src )

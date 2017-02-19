@@ -13,6 +13,9 @@ module.exports = function( conf ) {
 	if( conf.svg ) sequenceOnce.push('svg');
 
 	if( conf.sass ) {
+		sequenceOnce.push('sass-clean');
+		sequenceWatch.push('sass-clean');
+
 		sequenceOnce.push('sass');
 		sequenceWatch.push('sass');
 	}
@@ -27,9 +30,11 @@ module.exports = function( conf ) {
 	}
 
     gulp.task('watch', function() {
-        seq( sequenceOnce );
+        seq.apply( this, sequenceOnce );
 
-        gulp.watch( config.sass, sequenceWatch );
+        gulp.watch( config.sass, function() {
+			seq.apply( this, sequenceWatch );
+		});
 
         gutil.log( gutil.colors.bgGreen('Watching for changes...') );
     });

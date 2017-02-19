@@ -44,10 +44,18 @@ module.exports = function( conf ) {
 		bundler.transform( uglifyify, { global : true } );
 
 		bundler.on('update', function() {
-			seq('browserify:del', 'browserify:bundle');
+			var updateSequence = ['browserify:del', 'browserify:bundle'];
+
+			if( conf.rev ) updateSequence.push('rev');
+
+			seq.apply( this, updateSequence );
 		});
 
-		return seq('browserify:del', 'browserify:bundle');
+		var sequence = ['browserify:del', 'browserify:bundle'];
+
+		if( conf.rev ) sequence.push('rev');
+
+		return seq.apply( this, sequence );
 	};
 
 	gulp.task('browserify:bundle', function () {
