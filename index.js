@@ -5,6 +5,7 @@ module.exports = function( config ) {
     config = require('./tasks/modernizr')( config );
     config = require('./tasks/browserify')( config );
     config = require('./tasks/rev')( config );
+    config = require('./tasks/critical')( config );
     config = require('./tasks/default')( config );
     config = require('./tasks/watch')( config );
 

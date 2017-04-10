@@ -11,6 +11,7 @@ watchify    = require('watchify'),
 uglifyify   = require('uglifyify'),
 hbsfy       = require('hbsfy'),
 source      = require('vinyl-source-stream'),
+buffer      = require('vinyl-buffer'),
 seq         = require('run-sequence'),
 notify      = require('gulp-notify');
 
@@ -63,8 +64,14 @@ module.exports = function( conf ) {
 		.transform( babelify )
 		.bundle()
 		.on( 'error', onError )
-		.pipe( source( 'bundle.js' ) )
-		.pipe( rename( config.id + '.js' ) )
+		.pipe( gulpIf( ! inProduction, source( config.id + '.js' ) ) )
+		.pipe( buffer() )
+		.pipe( gulpIf( ! inProduction, sourcemaps.init({
+			loadMaps: true
+		}) ) )
+		.pipe( gulpIf( ! inProduction, sourcemaps.write('.', {
+			sourceRoot: './src/js'
+		}) ) )
 		.pipe( gulp.dest( config.dist ) )
 		.pipe( gulpIf( ! inProduction, notify({ message: 'Browserified!', onLast: true }) ) );
 	});

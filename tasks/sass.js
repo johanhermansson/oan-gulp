@@ -20,8 +20,14 @@ module.exports = function( conf ) {
 	var config = conf.sass,
     inProduction = !! argv.production;
 
+	var distFolderSlashes = config.dist.split('/');
+	var relativeSrc = Array( distFolderSlashes.length ).join('../') + config.srcFolder;
+
 	gulp.task('sass-clean', function() {
-		return clean( config.dist + '/' + config.id + '*.css' );
+		return clean( [
+			config.dist + '/*.css',
+			config.dist + '/*.map'
+		] );
 	});
 
     gulp.task('sass', function() {
@@ -40,9 +46,8 @@ module.exports = function( conf ) {
         // we don't serve the source files
         // so include scss content inside the sourcemaps
         .pipe( gulpIf( ! inProduction, sourcemaps.write('.', {
-            sourceRoot: config.srcFolder
-        }) ) )
-        .pipe( rename( config.id + '.css' ) )
+			sourceRoot: './src/sass'
+		}) ) )
         // write sourcemaps to a specific directory
         // give it a file and save
         .pipe( gulp.dest( config.dist ) )

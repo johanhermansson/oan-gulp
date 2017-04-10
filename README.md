@@ -20,8 +20,7 @@ require('oan-gulp-tasks')({
             './src/sass/app.scss'
         ],
         srcFolder: './src/sass',
-        dist: './dist/css',
-        id: 'app'
+        dist: './dist/css'
     },
     svg: {
         src: './src/svg/**/*.svg',
@@ -40,6 +39,25 @@ require('oan-gulp-tasks')({
     modernizr: {
         src: './src/js/**/*.js',
         includeTests: []
+    },
+    critical: {
+        dimensions: [
+            { width: 375, height: 667 },
+            { width: 1024, height: 768 }
+        ],
+        src: './dist/css/app.css',
+        dist: './dist/css/critical',
+        urls: [
+            'http://example.com/'
+        ],
+        urlFilter: function( url, i ) {
+            // Optional. Use to change url
+            return url;
+        },                  
+        filenameFilter: function( url, i ) {
+            // Optional. Use to change filename
+            return url;
+        }
     }
 });
 ```
