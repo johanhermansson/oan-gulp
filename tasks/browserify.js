@@ -64,7 +64,7 @@ module.exports = function( conf ) {
 		.transform( babelify )
 		.bundle()
 		.on( 'error', onError )
-		.pipe( gulpIf( ! inProduction, source( config.id + '.js' ) ) )
+		.pipe( source( config.id + '.js' ) )
 		.pipe( buffer() )
 		.pipe( gulpIf( ! inProduction, sourcemaps.init({
 			loadMaps: true
